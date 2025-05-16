@@ -23,6 +23,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- emailjs -->
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <!-- <script>
+    (function() {
+      emailjs.init("LRhDb2mcGNGmnFr0y"); // Ganti dengan Public Key Anda
+    })();
+  </script> -->
 </head>
 
 <body>
@@ -184,9 +192,9 @@
             <button class="navbar-link" data-nav-link>Portfolio</button>
           </li>
 
-          <li class="navbar-item">
+          <!-- <li class="navbar-item">
             <button class="navbar-link" data-nav-link h>Blog</button>
-          </li>
+          </li> -->
 
           <li class="navbar-item">
             <button class="navbar-link" data-nav-link>Contact</button>
@@ -1200,10 +1208,10 @@
 
           <h3 class="h3 form-title">Contact Form</h3>
 
-          <form action="#" class="form" data-form>
+          <form action="#" id="contact-form" class="form" data-form>
 
             <div class="input-wrapper">
-              <input type="text" name="fullname" class="form-input" placeholder="Full name" required data-form-input>
+              <input type="text" name="name" class="form-input" placeholder="Full name" required data-form-input>
 
               <input type="email" name="email" class="form-input" placeholder="Email address" required data-form-input>
             </div>
@@ -1226,7 +1234,37 @@
   </main>
 
 
+  <script>
+    // Inisialisasi EmailJS dengan Public Key
+    (function () {
+      emailjs.init("LRhDb2mcGNGmnFr0y"); // Ganti dengan Public Key milikmu
+    })();
+  
+    // Kirim email saat form disubmit
+    document.getElementById("contact-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+  
+      emailjs.sendForm('service_4uur2h4', 'template_puyvm78', this) // Ganti dengan Service ID & Template ID kamu
+        .then(function () {
+          alert('✅ Pesan berhasil dikirim!');
+        }, function (error) {
+          alert('❌ Gagal mengirim pesan: ' + JSON.stringify(error));
+        });
+    });
+  </script>
 
+<!-- <script>
+  document.getElementById("contact-form").addEventListener("submit", function(event) {
+    event.preventDefault();
+  
+    emailjs.sendForm('service_4uur2h4', 'template_puyvm78', this)
+      .then(function() {
+        alert('Pesan berhasil dikirim!');
+      }, function(error) {
+        alert('Gagal mengirim pesan: ' + JSON.stringify(error));
+      });
+  });
+  </script> -->
 
 
 
